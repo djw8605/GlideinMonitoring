@@ -20,7 +20,7 @@ function googleReady() { gready = 1; drawChart(); }
 
 function drawChart() {
    if (gready == 1) {
-        $.ajax({type: "GET", url: "stats/gsitedata",  success: parseXml});
+//        $.ajax({type: "GET", url: "stats/gsitedata",  success: parseXml});
    }
 
 }
