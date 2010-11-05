@@ -33,5 +33,7 @@ rrdtool graph graph.png -a PNG --title "Glideins Running" $buildstring
 done
 # Build the graph
 #rrdtool graph graph.png -a PNG --title "Glideins Running" $buildstring
+
 cp *.rrd /var/www/html/sites
+chmod 644 /var/www/html/sites/*.rrd
 
