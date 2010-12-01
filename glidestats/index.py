@@ -131,6 +131,7 @@ $("#chartflipper").click( function() {
 <img id="userdata" />
 <img src="stats/allsites"/>
 <img src="stats/allusers"/> 
+<img src="stats/idlesites"/>
 </body>
 
 </html>

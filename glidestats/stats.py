@@ -40,7 +40,19 @@ def allsites(req):
     pie.run(sites, req, metadata)
 
 
-    #req.write(stderr.read())
+def idlesites(req):
+    (stdout, stderr) = runCommand(". /opt/condor-7.4.3/condor.sh; condor_status -avail -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
+    sites = {}
+    for line in stdout.readlines():
+        split_line = line.strip().split()
+        sites[split_line[1]] = split_line[0]
+    
+    pie = PieGraph()
+    metadata = { 'title': 'Sites with idle glideins' }
+    req.content_type = "image/x-png"
+    pie.run(sites, req, metadata)
+
+
 
 def gsitedata(req):
     (stdout, stderr) = runCommand(". /opt/condor-7.4.3/condor.sh; condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
