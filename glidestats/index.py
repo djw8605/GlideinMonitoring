@@ -125,7 +125,10 @@ $("#chartflipper").click( function() {
 
 </head>
 <body>
-<button type="button" id="chartflipper" >Image Charts</button>
+<a href="http://glidein.unl.edu/vofrontend/monitor/frontend_OSG_gWMSFrontend/frontendStatus.html">GlideinWMS VO Frontend Monitoring</a><br/>
+<a href="http://rcf-gratia.unl.edu/gratia/xml/glidein_hours_bar_smry">Glidein Accounting</a><br/>
+<a href="http://glidein.unl.edu/glidehisto/">Glidein Histogram</a><br/>
+
 <div id="gviz"></div>
 <div id="userdataurl"><div>
 <img id="userdata" />
