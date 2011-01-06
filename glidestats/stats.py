@@ -14,7 +14,7 @@ def handler(req):
 
 
 def allusers(req):
-    (stdout, stderr) = runCommand(". /opt/condor-7.4.3/condor.sh; condor_status -format '%s\n' 'RemoteOwner' | sort | uniq -c")
+    (stdout, stderr) = runCommand(" condor_status -format '%s\n' 'RemoteOwner' | sort | uniq -c")
     users = {}
     for line in stdout.readlines():
          split_line = line.strip().split()
@@ -28,7 +28,7 @@ def allusers(req):
 
 
 def allsites(req):
-    (stdout, stderr) = runCommand(". /opt/condor-7.4.3/condor.sh; condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
+    (stdout, stderr) = runCommand(" condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
     sites = {}
     for line in stdout.readlines():
         split_line = line.strip().split()
@@ -41,7 +41,7 @@ def allsites(req):
 
 
 def idlesites(req):
-    (stdout, stderr) = runCommand(". /opt/condor-7.4.3/condor.sh; condor_status -avail -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
+    (stdout, stderr) = runCommand(" condor_status -avail -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
     sites = {}
     for line in stdout.readlines():
         split_line = line.strip().split()
@@ -55,7 +55,7 @@ def idlesites(req):
 
 
 def gsitedata(req):
-    (stdout, stderr) = runCommand(". /opt/condor-7.4.3/condor.sh; condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
+    (stdout, stderr) = runCommand(" condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
     final_out = "<sitedata>"
     for line in stdout.readlines():
         split_line =  line.strip().split()
@@ -65,7 +65,7 @@ def gsitedata(req):
 
     
 def guserdata(req):
-    (stdout, stderr) = runCommand(". /opt/condor-7.4.3/condor.sh;  condor_status -submitter -format '<user name=\"%s\"' 'Name' -format ' idle=%i' 'IdleJobs' -format ' running=%i />' 'RunningJobs'")
+    (stdout, stderr) = runCommand("  condor_status -submitter -format '<user name=\"%s\"' 'Name' -format ' idle=%i' 'IdleJobs' -format ' running=%i />' 'RunningJobs'")
     final_out = "<userdata>"
     final_out += stdout.read()
     final_out += "</userdata>"
