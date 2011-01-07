@@ -123,6 +123,8 @@ $("#chartflipper").click( function() {
 
 </script>
 
+<title>Glidein Monitoring</title>
+
 </head>
 <body>
 <a href="http://glidein.unl.edu/vofrontend/monitor/frontend_OSG_gWMSFrontend/frontendStatus.html">GlideinWMS VO Frontend Monitoring</a><br/>
