@@ -20,7 +20,7 @@ def allusers(req):
          split_line = line.strip().split()
          users[split_line[1]] = split_line[0]
     pie = PieGraph()
-    metadata = { 'title': 'Users Running' }
+    metadata = { 'title': 'Users Running on GlideinWMS Resources' }
     req.content_type = "image/x-png"
     pie.run(users, req, metadata)
 
