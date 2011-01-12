@@ -54,6 +54,26 @@ def idlesites(req):
     pie.run(sites, req, metadata)
 
 
+def flocked(req):
+    (stdout, stderr) = runCommand("condor_status -schedd -format '%s ' 'TotalRunningJobs' -format '%s\n' 'TotalFlockedJobs' -const 'Name==\"glidein.unl.edu\"'")
+    # Should only be 1 line: totalrunning totalflocked
+    line = stdout.readline()
+    totalrunning, totalflocked = line.split()
+    totalrunning = int(totalrunning)
+    totalflocked = int(totalflocked)
+    nonflocked = totalrunning - totalflocked
+    data = {"Flocked Jobs": totalflocked, "Non-Flocked Jobs": nonflocked }
+
+    pie = PieGraph()
+    metadata = { 'title': 'Flocked vs Non-Flocked' }
+    req.content_type = "image/x-png"
+    pie.run(data, req, metadata)
+
+
+
+
+
+
 
 def gsitedata(req):
     (stdout, stderr) = runCommand(" condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
