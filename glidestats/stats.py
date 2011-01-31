@@ -86,7 +86,7 @@ def gsitedata(req):
 
     
 def guserdata(req):
-    (stdout, stderr) = runCommand("  condor_status -submitter -format '<user name=\"%s\"' 'Name' -format ' idle=%i' 'IdleJobs' -format ' running=%i />' 'RunningJobs+FlockedJobs'")
+    (stdout, stderr) = runCommand("  condor_status -submitter -format '<user name=\"%s\"' 'Name' -format ' idle=%i' 'IdleJobs' -format ' running=%i ' 'RunningJobs' -format ' flocked=%s ' 'FlockedJobs' -format '/>' 'None'")
     final_out = "<userdata>"
     final_out += stdout.read()
     final_out += "</userdata>"

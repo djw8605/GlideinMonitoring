@@ -65,7 +65,12 @@ function parseuserdata(xml) {
     var idle = [];
     var users = [];
     $(xml).find("user").each(function() {
-        running.push($(this).attr("running"));
+        var flocked = $(this).attr('flocked');
+        if (typeof flocked !== 'undefined' && flocked !== false) {
+           running.push((parseFloat($(this).attr("running")) + parseFloat(flocked)).toString());
+        } else {
+           running.push($(this).attr("running"));
+        }
         idle.push($(this).attr("idle"));
         users.push($(this).attr("name"));
     });
