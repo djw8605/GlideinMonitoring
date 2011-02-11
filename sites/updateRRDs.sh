@@ -11,9 +11,9 @@ slots=${sitedata[0]}
 site=${sitedata[1]}
 
 # Set the rrd's to 0
-#for file in `ls *.rrd`; do
-#rrdupdate $file -t slots N:0
-#done
+for file in `ls *.rrd`; do
+rrdupdate $file -t slots N:0
+done
 
 if [ -e $site.rrd ]; then
   rrdupdate $site.rrd -t slots N:$slots
