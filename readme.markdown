@@ -2,12 +2,10 @@
 
 This is the glidein monitoring used at the University of Nebraska - Lincoln.
 
-Example at <http://glidein.unl.edu/glidestats/>
-
 There are three components to the monitoring:
 
-*   glidestats - Graphs of current usage
-*   sites - RRD plotting of past usage
+*   glidestats - Graphs of current usage <http://glidein.unl.edu/glidestats/>
+*   sites - RRD plotting of past usage <http://glidein.unl.edu/sites/>
 *   gmetric - Ganglia reporting of usage.
 
 
@@ -42,9 +40,8 @@ mod_python for the image generating.  Configuration for the mod_python should be
 Needs to be moved into a web accessable directory.  The example above uses /var/www/html/glidestats.  Image generation should then work.  
 
 
-### sites
-w
-Web accessable
+### Sites
+Web accessable.  The javascriptrrd libraries should be in lib directory.
 
 
 
