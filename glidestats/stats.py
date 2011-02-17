@@ -35,7 +35,7 @@ def allsites(req):
         sites[split_line[1]] = split_line[0]
     
     pie = PieGraph()
-    metadata = { 'title': 'Glideins by Resource' }
+    metadata = { 'title': 'Running Jobs by Resource' }
     req.content_type = "image/x-png"
     pie.run(sites, req, metadata)
 
