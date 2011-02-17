@@ -22,6 +22,7 @@ function googleReady() { gready = 1; drawChart(); }
 
 function drawChart() {
    if (gready == 1) {
+    $.ajax({type: "GET", url: "stats/guserdata",  success: parseuserdata});
 //        $.ajax({type: "GET", url: "stats/gsitedata",  success: parseXml});
    }
 
@@ -124,7 +125,6 @@ $("#chartflipper").click( function() {
 
 });
 
-    $.ajax({type: "GET", url: "stats/guserdata",  success: parseuserdata});
 
 });
 
