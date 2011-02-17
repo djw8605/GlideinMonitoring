@@ -3,6 +3,7 @@
 This is the glidein monitoring used at the University of Nebraska - Lincoln.
 
 There are three components to the monitoring:
+
 *   glidestats - Graphs of current usage
 *   sites - RRD plotting of past usage
 *   gmetric - Ganglia reporting of usage.
