@@ -2,6 +2,8 @@
 
 This is the glidein monitoring used at the University of Nebraska - Lincoln.
 
+Example at <http://glidein.unl.edu/glidestats/>
+
 There are three components to the monitoring:
 
 *   glidestats - Graphs of current usage
@@ -10,8 +12,9 @@ There are three components to the monitoring:
 
 
 ## Dependencies
-The glidestats requires graphtool from the repo:
-http://t2.unl.edu/store/repos/nebraska/5/nebraska/x86_64/
+### Glidestats
+graphtool from the repo:
+<http://t2.unl.edu/store/repos/nebraska/5/nebraska/x86_64/>
 
 mod_python for the image generating.  Configuration for the mod_python should be something like:
     <Directory "/var/www/html/glidestats">
@@ -27,13 +30,19 @@ mod_python for the image generating.  Configuration for the mod_python should be
     </Directory>
 
 
+### Sites
+*   javascriptrrd library: <http://sourceforge.net/projects/javascriptrrd/>  
+*   rrdtool (yum should pull it in)
+
 
 
 ## Installation
 
 ### Glidestats
-For glidestats:
-Needs to be moved into a web accessable directory.  The example above uses /var/www/html/glidestats.  
+Needs to be moved into a web accessable directory.  The example above uses /var/www/html/glidestats.  Image generation should then work.  
+
+
+### sites
 
 
 Condor needs the configuration value:
