@@ -28,15 +28,14 @@ def allusers(req):
 
 
 def allsites(req):
-    (stdout, stderr) = runCommand("condor_q -format '%s\n' 'MATCH_EXP_JOBGLIDEIN_Site' | sort | uniq -c")
-    #(stdout, stderr) = runCommand(" condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
+    (stdout, stderr) = runCommand(" condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
     sites = {}
     for line in stdout.readlines():
         split_line = line.strip().split()
         sites[split_line[1]] = split_line[0]
     
     pie = PieGraph()
-    metadata = { 'title': 'Jobs Running by Resource' }
+    metadata = { 'title': 'Glideins by Resource' }
     req.content_type = "image/x-png"
     pie.run(sites, req, metadata)
 
