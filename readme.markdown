@@ -10,15 +10,31 @@ There are three components to the monitoring:
 
 
 ## Dependencies
-The index.py requires graphtool:
+The glidestats requires graphtool:
 http://t2.unl.edu/store/repos/nebraska/5/nebraska/x86_64/graphtool-0.6.6-6.noarch.rpm
+
+Also, the monitoring is python, so mod_python for the image generating.  Configuration for the mod_python should be something like:
+    <Directory "/var/www/html/glidestats">
+        <Files *.html>
+            SetHandler default-handler
+        </Files>
+        # AddHandler mod_python .py
+        
+        SetHandler mod_python
+        PythonHandler mod_python.publisher
+        PythonDebug On
+        DirectoryIndex index.html
+    </Directory>
 
 
 ## Installation
-There are 3 components to this monitoring.  
+
+### Glidestats
+For glidestats:
+Needs to be moved into a web accessable directory.  Also, needs to be able to implement 
 
 
-Additionally, condor needs the configuration value:
+Condor needs the configuration value:
     JOBGLIDEIN_Site="$$([IfThenElse(IsUndefined(TARGET.GLIDEIN_Site), FileSystemDomain, TARGET.GLIDEIN_Site)])"
     SUBMIT_EXPRS = $(SUBMIT_EXPRS) JOBGLIDEIN_Site
 

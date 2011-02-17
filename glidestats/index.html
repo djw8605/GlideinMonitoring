@@ -1,8 +1,4 @@
 
-from mod_python import apache
-
-def index(req):
-    s = """
 
 <html>
 <head>
@@ -149,9 +145,6 @@ $("#chartflipper").click( function() {
 
 
 
-"""
-    req.content_type = "text/html"
-    req.write(s)
 
 
 
