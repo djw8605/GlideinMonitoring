@@ -43,11 +43,9 @@ Needs to be moved into a web accessable directory.  The example above uses /var/
 
 
 ### sites
+w
+Web accessable
 
-
-Condor needs the configuration value:
-    JOBGLIDEIN_Site="$$([IfThenElse(IsUndefined(TARGET.GLIDEIN_Site), FileSystemDomain, TARGET.GLIDEIN_Site)])"
-    SUBMIT_EXPRS = $(SUBMIT_EXPRS) JOBGLIDEIN_Site
 
 
 
