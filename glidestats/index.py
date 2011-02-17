@@ -1,14 +1,20 @@
 
 
+from mod_python import apache
+
+def index(req):
+    s = """
+
+
 <html>
 <head>
 <meta http-equiv="refresh" content="300" > 
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript" src="http://glidein.unl.edu/jquery.js"></script>
 
 <script type="text/javascript">
 var gready = 0;
 google.load('visualization', '1', {'packages':['corechart', 'imagepiechart']});
+google.load("jquery", "1.5.0");
 google.setOnLoadCallback(googleReady);
 
 
@@ -145,6 +151,8 @@ $("#chartflipper").click( function() {
 
 
 
-
+"""
+    req.content_type = "text/html"
+    req.write(s)
 
 
