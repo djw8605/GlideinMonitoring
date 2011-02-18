@@ -23,6 +23,11 @@ function googleReady() { gready = 1; drawChart(); }
 function drawChart() {
    if (gready == 1) {
     $.ajax({type: "GET", url: "stats/guserdata",  success: parseuserdata});
+    $('#allsites').attr('src', 'stats/allsites');
+    $('#allsites').attr('alt', 'Loading Allsites');
+    $('#allusers').attr('src', 'stats/allusers');
+    $('#idlesites').attr('src', 'stats/idlesites');
+    $('#flocked').attr('src', 'stats/flocked');
 //        $.ajax({type: "GET", url: "stats/gsitedata",  success: parseXml});
    }
 
@@ -141,10 +146,10 @@ $("#chartflipper").click( function() {
 <div id="gviz"></div>
 <div id="userdataurl"><div>
 <img id="userdata" />
-<img src="stats/allsites"/>
-<img src="stats/allusers"/> 
-<img src="stats/idlesites"/>
-<img src="stats/flocked"/>
+<img id="allsites"/> 
+<img id="allusers"/>
+<img id="idlesites"/>
+<img id="flocked"/>
 </body>
 
 </html>
