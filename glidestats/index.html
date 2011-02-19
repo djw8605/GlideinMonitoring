@@ -26,13 +26,14 @@ var gready = 0;
 var reloadTime = 1000*120;
 // Refresh the page every hour
 var globalReload = 1000*60*60
+var timeout;
 google.load('visualization', '1', {'packages':['corechart', 'imagepiechart']});
 google.load("jquery", "1.5.0");
 google.setOnLoadCallback(googleReady);
 
 setTimeout("window.location.reload()", globalReload);
 
-function googleReady() { gready = 1; drawChart(); setTimeout("reloadAll()", reloadTime);}
+function googleReady() { gready = 1; drawChart(); timeout = setTimeout("reloadAll()", reloadTime);}
 
 
 function reloadAll() {
@@ -40,6 +41,7 @@ function reloadAll() {
         $(this).addClass("loading");
     });
     drawChart();
+    clearTimeout(timeout);
     setTimeout("reloadAll()", reloadTime);
 
 }
@@ -201,6 +203,7 @@ $("#chartflipper").click( function() {
 <a href="http://glidein.unl.edu/glidehisto/">Glidein Histogram</a><br/>
 <div id="gviz"></div>
 <div id="userdataurl"></div>
+<div id="reloadbuttong"><input type="button" value="Reload Images" onclick="reloadAll()"/> </div>
 <div id="userdata" class="loading toReload" ></div>
 <div id="allsites" class="loading loader toReload"> </div> 
 <div id="allusers" class="loading loader toReload"> </div>
