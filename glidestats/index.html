@@ -26,13 +26,14 @@ var gready = 0;
 var reloadTime = 1000*120;
 // Refresh the page every hour
 var globalReload = 1000*60*60
+var timeout;
 google.load('visualization', '1', {'packages':['corechart', 'imagepiechart']});
 google.load("jquery", "1.5.0");
 google.setOnLoadCallback(googleReady);
 
 setTimeout("window.location.reload()", globalReload);
 
-function googleReady() { gready = 1; drawChart(); setTimeout("reloadAll()", reloadTime);}
+function googleReady() { gready = 1; drawChart(); timeout = setTimeout("reloadAll()", reloadTime);}
 
 
 function reloadAll() {
@@ -40,6 +41,7 @@ function reloadAll() {
         $(this).addClass("loading");
     });
     drawChart();
+    clearTimeout(timeout);
     setTimeout("reloadAll()", reloadTime);
 
 }
