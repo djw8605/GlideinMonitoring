@@ -55,10 +55,14 @@ function drawChart() {
         $(this).html("");
         var selector_id = "#" + id;
         var d = new Date()
+        var bare_url = "stats/" + id;
+        $(this).html("<center id=\"" + id +"-label\"><h3>Loading " + bare_url + "</h3></center>");
         var url = "stats/" + id + "?" + d.getTime();
+        var external = $(this);
 
         $(img).load(function() {
             $(this).hide();
+            $("#"+id+"-label").remove();
             $(selector_id).removeClass('loading').append(this);
             $(selector_id).css('height', $(this).height());
             $(selector_id).css('width', $(this).width());
@@ -159,10 +163,13 @@ function parseuserdata(xml) {
     var img = new Image();
     var g = new Date();
     var url = baseurl + "|?" + g.getTime();
-    var selector_id = "#userdata"
+    var selector_id = "#userdata";
+    var id = selector_id;
     $(selector_id).html("");
+    $(selector_id).html("<center id=\"userdata-label\"><h3>Loading User Data</h3></center>");
     $(img).load(function() {
         $(this).hide();
+        $("#userdata-label").remove();
         $(selector_id).removeClass('loading').append(this);
         $(selector_id).css('height', $(this).height());
         $(selector_id).css('width', $(this).width());
