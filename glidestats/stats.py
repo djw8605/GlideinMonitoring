@@ -95,6 +95,7 @@ def guserdata(req):
 
 def runCommand(command):
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p.wait()
     return (p.stdout, p.stderr)
 
 
