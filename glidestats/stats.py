@@ -28,7 +28,7 @@ def allusers(req):
 
 
 def allsites(req):
-    (stdout, stderr) = runCommand("condor_q -format '%s\n' 'MATCH_EXP_JOBGLIDEIN_Site' | sort | uniq -c")
+    (stdout, stderr) = runCommand("condor_q -format '%s\n' 'MATCH_EXP_JOBGLIDEIN_ResourceName' | sort | uniq -c")
     sites = {}
     for line in stdout.readlines():
         split_line = line.strip().split()
@@ -41,7 +41,7 @@ def allsites(req):
 
 
 def idlesites(req):
-    (stdout, stderr) = runCommand(" condor_status -avail -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
+    (stdout, stderr) = runCommand(" condor_status -avail -format '%s\n' 'GLIDEIN_ResourceName' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
     sites = {}
     for line in stdout.readlines():
         split_line = line.strip().split()
@@ -75,7 +75,7 @@ def flocked(req):
 
 
 def gsitedata(req):
-    (stdout, stderr) = runCommand(" condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
+    (stdout, stderr) = runCommand(" condor_status -format '%s\n' 'GLIDEIN_ResourceName' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c")
     final_out = "<sitedata>"
     for line in stdout.readlines():
         split_line =  line.strip().split()
@@ -85,7 +85,7 @@ def gsitedata(req):
 
     
 def guserdata(req):
-    (stdout, stderr) = runCommand("  condor_status -submitter -format '<user name=\"%s\"' 'Name' -format ' idle=%i' 'IdleJobs' -format ' running=%i ' 'RunningJobs' -format ' flocked=%s ' 'FlockedJobs' -format '/>' 'None'")
+    (stdout, stderr) = runCommand("  condor_status  -const 'regexp(\"@glidein.unl.edu\", Name) || regexp(\"@cpass.unl.edu\", Name)' -submitter -format '<user name=\"%s\"' 'Name' -format ' idle=%i' 'IdleJobs' -format ' running=%i ' 'RunningJobs' -format ' flocked=%s ' 'FlockedJobs' -format '/>' 'None'")
     final_out = "<userdata>"
     final_out += stdout.read()
     final_out += "</userdata>"
