@@ -2,7 +2,7 @@
 #. /opt/condor-7.4.3/condor.sh
 cd /home/swanson/dweitzel/sites_rrd
 
-output=`condor_status -format '%s\n' 'GLIDEIN_Site' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c`
+output=`condor_status -format '%s\n' 'GLIDEIN_ResourceName' -const 'IS_MONITOR_VM =!= TRUE' | sort | uniq -c`
 IFS=$'\n'
 declare -a sitedata
 for line in $output; do
