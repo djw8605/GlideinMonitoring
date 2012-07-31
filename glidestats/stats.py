@@ -28,7 +28,7 @@ def allusers(req):
 
 
 def allsites(req):
-    (stdout, stderr) = runCommand("condor_q -format '%s\n' 'MATCH_EXP_JOBGLIDEIN_ResourceName' | sort | uniq -c")
+    (stdout, stderr) = runCommand("condor_q -const 'JobStatus =?= 2' -format '%s\n' 'MATCH_EXP_JOBGLIDEIN_ResourceName' | sort | uniq -c")
     #(stdout, stderr) = runCommand("condor_status -format '%s\n' 'GLIDEIN_ResourceName' -const 'IS_MONITOR_VM =?= false'| sort | uniq -c")
     sites = {}
     for line in stdout.readlines():
