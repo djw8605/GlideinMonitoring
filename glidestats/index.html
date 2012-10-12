@@ -216,16 +216,13 @@ $("#chartflipper").click( function() {
 <li><a href="http://glidein.unl.edu/vofrontend/monitor/frontendGroupGraphStatusNow.html">Group Graphs</a></li>
 <li><a href="http://gratiaweb.grid.iu.edu/gratia/xml/glidein_hours_bar_smry?vo=hcc">Accounting</a></li>
 </ul>
+<div id="reloadbuttong"><button class="btn btn-primary pull-right" onclick="reloadAll()">Reload Images</button></div>
 </div>
 </div> <!-- end nav -->
 
-<div id="header" class="page-header"><h1>GlideinWMS Monitoring<small>custom unl glidein.unl.edu monitoring</small></h1></div>
+<div id="header" class="page-header"><h1>GlideinWMS Monitoring</h1></div>
 <div class="row-fluid">
-<div class="span2">
-<div id="reloadbuttong"><button class="btn btn-primary" onclick="reloadAll()">Reload Images</button></div>
-
-</div> <!-- End Span -->
-<div class="span10">
+<div class="offset1 span10">
 <div id="gviz"></div>
 <div id="userdataurl"></div>
 <div id="userdata" class="loading toReload" ></div>
