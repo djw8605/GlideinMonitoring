@@ -4,6 +4,8 @@
 <html>
 <head>
 <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAu0TL0A-Hx1fvzGI6gOofLxRdWR7O4-XcWvAQALHxHt_c1fTKOhSeYIt5K3vK4_YcuhTz3-irM0p_eQ"></script>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
 <style type="text/css">
 .loader {
   width: 800px;
@@ -204,19 +206,41 @@ $("#chartflipper").click( function() {
 
 </head>
 <body>
-<div id="header"><h2>GlideinWMS Monitoring</h2></div>
-<a href="http://glidein.unl.edu/vofrontend/monitor/frontendStatus.html">GlideinWMS VO Frontend Monitoring</a><br/>
-<a href="http://glidein.unl.edu/vofrontend/monitor/frontendGroupGraphStatusNow.html">GlideinWMS Group Graphs</a><br/>
-<a href="http://gratiaweb.grid.iu.edu/gratia/xml/glidein_hours_bar_smry?vo=hcc">Glidein Accounting</a><br/>
-<a href="http://glidein.unl.edu/glidehisto/">Glidein Histogram</a><br/>
+<div class="container-fluid">
+<div class="navbar">
+<div class="navbar-inner">
+<a class="brand" href="#">Glidein Monitoring</a>
+<ul class="nav">
+<li class="active"><a href="#">Custom Home</a></li>
+<li><a href="http://glidein.unl.edu/vofrontend/monitor/frontendStatus.html">Historical Monitoring</a></li>
+<li><a href="http://glidein.unl.edu/vofrontend/monitor/frontendGroupGraphStatusNow.html">Group Graphs</a></li>
+<li><a href="http://gratiaweb.grid.iu.edu/gratia/xml/glidein_hours_bar_smry?vo=hcc">Accounting</a></li>
+</ul>
+</div>
+</div> <!-- end nav -->
+
+<div id="header" class="page-header"><h1>GlideinWMS Monitoring<small>custom unl glidein.unl.edu monitoring</small></h1></div>
+<div class="row-fluid">
+<div class="span2">
+<div id="reloadbuttong"><button class="btn btn-primary" onclick="reloadAll()">Reload Images</button></div>
+
+</div> <!-- End Span -->
+<div class="span10">
 <div id="gviz"></div>
 <div id="userdataurl"></div>
-<div id="reloadbuttong"><input type="button" value="Reload Images" onclick="reloadAll()"/> </div>
 <div id="userdata" class="loading toReload" ></div>
 <div id="allsites" class="loading loader toReload"> </div> 
 <div id="allusers" class="loading loader toReload"> </div>
 <div id="idlesites" class="loading loader toReload"> </div>
 <div id="flocked" class="loading loader toReload"> </div>
+
+
+
+</div> <!-- end span -->
+</div> <!-- end row -->
+</div> <!-- end container -->
+
+
 </body>
 
 </html>
